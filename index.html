@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TrafficGuard - Smart Traffic Safety System</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <nav>
+        <div class="logo">
+          <i class="fas fa-traffic-light"></i>
+          <span>TrafficGuard</span>
+        </div>
+        <div class="nav-links">
+          <a href="#home" class="active">Home</a>
+          <a href="#features">Features</a>
+          <a href="#live-updates">Live Updates</a>
+          <a href="#alerts">Alerts</a>
+          <a href="#reports">Reports</a>
+        </div>
+        <div class="user-actions">
+          <button class="btn-primary">Download App</button>
+          <div class="theme-toggle">
+            <i class="fas fa-moon"></i>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>Drive Smarter, Drive Safer</h1>
+        <p>
+          Real-time traffic updates, safety alerts, and intelligent driving
+          assistance
+        </p>
+        <div class="cta-buttons">
+          <button class="btn-primary">Get Started</button>
+          <button class="btn-secondary">Learn More</button>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="trafficm.jpeg" alt="Traffic Map" />
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+      <h2>Smart Features for Safer Roads</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <i class="fas fa-map-marked-alt"></i>
+          <h3>Real-Time Traffic Updates</h3>
+          <p>
+            Get instant updates about traffic conditions, accidents, and road
+            closures in your area.
+          </p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-tachometer-alt"></i>
+          <h3>Speed Limit Alerts</h3>
+          <p>
+            Receive alerts when exceeding speed limits with GPS-based
+            monitoring.
+          </p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-exclamation-triangle"></i>
+          <h3>Danger Zone Warnings</h3>
+          <p>Get notified about high-risk areas and accident-prone zones.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-chart-line"></i>
+          <h3>Driver Analytics</h3>
+          <p>
+            Track and improve your driving behavior with detailed analytics.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Speed Monitoring Section -->
+    <section id="speed-monitor" class="speed-monitor">
+      <h2>Speed Monitoring</h2>
+      <div class="speed-dashboard">
+        <div class="current-speed">
+          <div class="speed-gauge">
+            <div class="gauge-value">0</div>
+            <div class="gauge-unit">km/h</div>
+          </div>
+          <div class="speed-info">
+            <div class="speed-limit">
+              <i class="fas fa-sign"></i>
+              <span>Speed Limit: <strong>50 km/h</strong></span>
+            </div>
+            <div class="location-info">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Current Zone: <strong>School Zone</strong></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="speed-alerts">
+          <div class="alert-settings">
+            <h3>Alert Settings</h3>
+            <div class="setting-group">
+              <label>
+                <input type="checkbox" id="visualAlerts" checked />
+                Visual Alerts
+              </label>
+              <label>
+                <input type="checkbox" id="audioAlerts" checked />
+                Audio Alerts
+              </label>
+              <label>
+                <input type="checkbox" id="vibrationAlerts" checked />
+                Vibration Alerts
+              </label>
+            </div>
+            <div class="alert-threshold">
+              <label>Alert Threshold (% above limit)</label>
+              <input
+                type="range"
+                min="0"
+                max="20"
+                value="10"
+                id="alertThreshold"
+              />
+              <span class="threshold-value">10%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="speed-history">
+        <h3>Speed History</h3>
+        <div class="history-chart">
+          <!-- Chart will be rendered here -->
+          <canvas id="speedChart"></canvas>
+        </div>
+        <div class="speed-violations">
+          <h3>Recent Violations</h3>
+          <div class="violations-list">
+            <!-- Violations will be dynamically added here -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Updates Section -->
+    <section id="live-updates" class="live-updates">
+      <h2>Live Traffic Updates</h2>
+      <div class="traffic-map">
+        <div class="map-container">
+          <!-- Map will be loaded here -->
+          <div id="map"></div>
+        </div>
+        <div class="traffic-sidebar">
+          <div class="traffic-filters">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Accidents</button>
+            <button class="filter-btn">Congestion</button>
+            <button class="filter-btn">Road Work</button>
+          </div>
+          <div class="traffic-incidents">
+            <!-- Incident cards will be dynamically added here -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Alerts Section -->
+    <section id="alerts" class="alerts">
+      <h2>Safety Alerts</h2>
+      <div class="alerts-container">
+        <div class="alert-card danger">
+          <i class="fas fa-exclamation-circle"></i>
+          <div class="alert-content">
+            <h4>Accident Alert</h4>
+            <p>Major accident on Highway 101, expect delays</p>
+            <span class="time">2 mins ago</span>
+          </div>
+        </div>
+        <div class="alert-card warning">
+          <i class="fas fa-construction"></i>
+          <div class="alert-content">
+            <h4>Road Work</h4>
+            <p>Construction on Main Street, use alternate route</p>
+            <span class="time">5 mins ago</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Report Section -->
+    <section id="reports" class="reports">
+      <h2>Report an Incident</h2>
+      <div class="report-form">
+        <form id="incident-form">
+          <div class="form-group">
+            <label>Incident Type</label>
+            <select required>
+              <option value="">Select type</option>
+              <option value="accident">Accident</option>
+              <option value="roadwork">Road Work</option>
+              <option value="hazard">Road Hazard</option>
+              <option value="police">Police Check</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Location</label>
+            <input type="text" placeholder="Enter location" required />
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea placeholder="Describe the incident" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary">Submit Report</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Voice Assistant -->
+    <div class="voice-assistant">
+      <button class="voice-btn">
+        <i class="fas fa-microphone"></i>
+      </button>
+      <div class="voice-tooltip">Click to activate voice commands</div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>TrafficGuard</h3>
+          <p>Making roads safer with smart technology</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <a href="#features">Features</a>
+          <a href="#live-updates">Live Updates</a>
+          <a href="#alerts">Alerts</a>
+          <a href="#reports">Reports</a>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>Email: lalisafekadu427@gail.com</p>
+          <p>Phone: +25169691099</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 TrafficGuard. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
